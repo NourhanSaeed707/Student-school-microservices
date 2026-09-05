@@ -28,6 +28,6 @@ public class StudentService {
     }
 
     public List<StudentDTO> findBySchoolId(Integer schoolId) {
-        return studentRepository.findAllBySchoolId(schoolId);
+        return studentRepository.findBySchoolId(schoolId).stream().map(mapper::toStudentDTO).toList();
     }
 }
