@@ -1,12 +1,11 @@
 package com.example.school.controllers;
-
+import com.example.school.Dtos.FullSchoolResponse;
 import com.example.school.Dtos.SchoolDTO;
 import com.example.school.entity.School;
 import com.example.school.services.SchoolService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -25,6 +24,11 @@ public class SchoolController {
     public ResponseEntity<List<SchoolDTO>> findAll() {
         var schools = schoolService.findAll();
         return ResponseEntity.ok(schools);
+    }
+
+    @GetMapping("/with-students/{schoolId}")
+    public ResponseEntity<FullSchoolResponse> findBySchoolId(@PathVariable Integer schoolId) {
+        return ResponseEntity.ok(schoolService.findSchoolsWithStudents(schoolId));
     }
 
 }

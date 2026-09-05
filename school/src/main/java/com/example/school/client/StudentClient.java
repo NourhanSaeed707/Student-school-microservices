@@ -1,0 +1,13 @@
+package com.example.school.client;
+import com.example.school.Dtos.StudentDTO;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import java.util.List;
+
+@FeignClient(name = "student-service", url = "${application.config.students-service}")
+public interface StudentClient {
+
+    @GetMapping("/school/{schoolId}")
+    List<StudentDTO> findBySchoolId(@PathVariable Integer schoolId);
+}

@@ -1,17 +1,16 @@
-package com.example.student.Dto;
+package com.example.school.Dtos;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class StudentDTO {
-    private Integer id;
-    private String firstName;
-    private String lastName;
+public class FullSchoolResponse {
+    private String name;
     private String email;
-    private Integer schoolId;
+    List<StudentDTO> students;
 }

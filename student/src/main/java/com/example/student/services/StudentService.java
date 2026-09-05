@@ -27,4 +27,7 @@ public class StudentService {
         return students.stream().map(mapper::toStudentDTO).toList();
     }
 
+    public List<StudentDTO> findBySchoolId(Integer schoolId) {
+        return studentRepository.findAllBySchoolId(schoolId);
+    }
 }
