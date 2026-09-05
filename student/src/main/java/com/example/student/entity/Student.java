@@ -1,13 +1,12 @@
 package com.example.student.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
+@Entity(name = "students")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -15,6 +14,7 @@ import lombok.NoArgsConstructor;
 public class Student {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String firstName;
     private String lastName;

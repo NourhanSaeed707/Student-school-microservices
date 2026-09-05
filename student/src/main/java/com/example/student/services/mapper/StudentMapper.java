@@ -13,6 +13,7 @@ public class StudentMapper {
                 .firstName(student.getFirstName())
                 .lastName(student.getLastName())
                 .email(student.getEmail())
+                .schoolId(student.getSchoolId())
                 .build();
     }
 
@@ -21,6 +22,7 @@ public class StudentMapper {
                 .firstName(studentDTO.getFirstName())
                 .lastName(studentDTO.getLastName())
                 .email(studentDTO.getEmail())
+                .schoolId(studentDTO.getSchoolId())
                 .build();
     }
 }
