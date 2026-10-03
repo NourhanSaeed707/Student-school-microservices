@@ -254,7 +254,83 @@ school-management-microservices/
 
 ---
 
-## 🔄 How the Application Works
+🔄 How the Application Works
+1️⃣ Application Startup
 
-### 1️⃣ Application Startup
+The infrastructure services start first:
 
+Config Server
+      ↓
+Eureka Server
+      ↓
+API Gateway
+      ↓
+Student Service
+      ↓
+School Service
+2️⃣ Service Registration
+
+The Student and School services register themselves with Eureka.
+
+Student Service ──────┐
+                      │
+                      ▼
+                Eureka Server
+                      ▲
+                      │
+School Service ───────┘
+
+Eureka keeps track of:
+
+Service name
+Service instance
+IP address
+Port
+Availability
+3️⃣ Client Request
+
+A client sends a request to the Gateway:
+
+GET /api/v1/students
+
+The request goes through:
+
+Client
+  │
+  ▼
+API Gateway
+  │
+  ▼
+Eureka
+  │
+  ▼
+Student Service
+  │
+  ▼
+PostgreSQL
+
+The response is then returned to the client.
+
+🐳 Running with Docker
+
+Make sure Docker is installed and running.
+
+Clone the repository:
+
+git clone https://github.com/your-username/school-management-microservices.git
+
+Navigate to the project:
+
+cd school-management-microservices
+
+Start the containers:
+
+docker-compose up -d
+
+Check running containers:
+
+docker ps
+
+To stop the application:
+
+docker-compose down
